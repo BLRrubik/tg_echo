@@ -1,9 +1,9 @@
 server:
-  port: ${SERVER_PORT:9050}
+  port: ${SERVER_PORT}
 
 bot:
-  name: ${BOT_NAME:test}
-  key: ${BOT_KEY:5811138683:AAEBWNou_hNOd1M--MZPjbsl9lOJXQ91VDU}
+  name: ${BOT_NAME}
+  key: ${BOT_KEY}
 
 messages:
-  delay: ${DEFAULT_DELAY:2000}
+  delay: ${DEFAULT_DELAY}
