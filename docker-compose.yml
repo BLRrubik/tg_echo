@@ -4,6 +4,8 @@ services:
     build: .
     image: bot-image
     container_name: bot-container
+    volumes:
+      - "./state:/state"
     ports:
       - "9050:9050"
     environment:

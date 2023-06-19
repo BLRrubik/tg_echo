@@ -14,6 +14,8 @@ import java.nio.file.Files
 import java.nio.file.NoSuchFileException
 import java.nio.file.Paths
 import java.util.*
+import java.util.logging.Logger
+import kotlin.math.log
 
 
 @Component
@@ -22,10 +24,11 @@ class ApplicationState @Autowired constructor(
     private val userService: UserService,
     private val delayService: DelayService,
 ) {
+    private val logger: Logger = Logger.getLogger(ApplicationState::class.java.name)
     private var state: State = State()
     init {
         try {
-            val json = String(Files.readAllBytes(Paths.get("state.json")))
+            val json = String(Files.readAllBytes(Paths.get("/state/state.json")))
 
             state = objectMapper.readValue(
                 json,
@@ -33,7 +36,7 @@ class ApplicationState @Autowired constructor(
             )
 
         } catch (e: NoSuchFileException) {
-            println("Failed to read state. Initializing new state/")
+            logger.info("Failed to read state. Initializing new state")
         } finally {
             userService.setState(state.users)
             delayService.setState(state.delay)
@@ -47,7 +50,7 @@ class ApplicationState @Autowired constructor(
 
         val json = objectMapper.writeValueAsString(state)
 
-        FileWriter("state.json").use { writer -> writer.write(json) }
+        FileWriter("/state/state.json").use { writer -> writer.write(json) }
 
     }
 }
