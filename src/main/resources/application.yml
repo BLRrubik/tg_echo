@@ -1,18 +1,9 @@
-bot:
-  name: ${BOT_NAME}
-  key: ${BOT_KEY}
-  adminIds: ${BOT_ADMIN}
+server:
+  port: ${SERVER_PORT:9050}
 
-spring:
-  config:
-    import: optional:file:.env[.properties]
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url: ${DB_URL}
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
-  jpa:
-    database: postgresql
-    open-in-view: false
-    hibernate:
-      ddl-auto: create
+bot:
+  name: ${BOT_NAME:test}
+  key: ${BOT_KEY:5811138683:AAEBWNou_hNOd1M--MZPjbsl9lOJXQ91VDU}
+
+messages:
+  delay: ${DEFAULT_DELAY:2000}

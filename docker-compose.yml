@@ -1,0 +1,16 @@
+version: '3.1'
+services:
+  bot:
+    build: .
+    image: bot-image
+    container_name: bot-container
+    ports:
+      - "9050:9050"
+    environment:
+      - BOT_KEY=5811138683:AAEBWNou_hNOd1M--MZPjbsl9lOJXQ91VDU
+      - BOT_NAME=ithunt_bot
+      - DEFAULT_DELAY=2000
+      - SERVER_PORT=9050
+
+
+

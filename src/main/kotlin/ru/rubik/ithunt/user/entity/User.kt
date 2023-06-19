@@ -1,19 +1,12 @@
 package ru.rubik.ithunt.user.entity
 
-import jakarta.persistence.Column
-import jakarta.persistence.Entity
-import jakarta.persistence.Id
+import ru.rubik.ithunt.message.model.dto.MessageDto
 import java.util.UUID
 
-@Entity
 data class User(
-    @Column(name = "telegram_id")
-    private val telegramId: Long,
-
-    @Column(name = "username")
-    private val username: String
+    val username: String
 ) {
-    @Id
-    @Column(name = "user_id")
-    private val id: UUID = UUID.randomUUID()
+    val id: UUID = UUID.randomUUID()
+    var messageCount: Long = 0
+    var lastMessage: MessageDto? = null
 }
